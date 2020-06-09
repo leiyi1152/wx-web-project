@@ -1,0 +1,205 @@
+.uCenterHead{
+	width: 100%;
+	height: 220px;
+	background: url(../images/uCenterBg.png) no-repeat 0 0;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+.photo .backBtn{
+	float: left;
+	width: 22px;
+	height: 38px;
+	background: url(../images/icon1_leftArrow.png) no-repeat 0 0;
+	background-size: 100%;
+	margin-top: 85px;
+}
+.photoImg{
+	float: left;
+	width: auto;
+	height: 210px;
+}
+.photoImg img{
+	width: 118px;
+	height: 118px;
+	border: 4px solid #fff;
+	border-radius: 50%;
+	box-sizing: border-box;
+	margin: 46px 30px 0;
+}
+.userInfo{
+	margin-top: 48px;
+	color: #fff;
+	font-size: 34px;
+	letter-spacing: 0.08em;
+	line-height: 58px;
+}
+.userInfo p:last-child{
+	width: 162px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	border: 1px solid #fff;
+	font-size: 20px;
+	color: #fff;
+	letter-spacing: 0.02em;
+}
+.userDate{
+	width: 100%;
+	height: 125px;
+	background: #fff;
+	margin-bottom: 25px;
+}
+.userDate li{
+	float: left;
+	width: 33%;
+	text-align: center;
+	font-size: 24px;
+	padding-top: 8px;
+	position: relative;
+}
+.userDate li:first-child .line,.userDate li:nth-child(2) .line{
+	position: absolute;
+	right:0 ;
+	top: 28px;
+	width: 2px;
+	height: 72px;
+	background: #cbcbcb;
+}
+/*.resetHeight{
+	height: 125px;
+	margin-bottom: 4px;
+	padding-top: 15px;
+}*/
+.userDate li>p{
+	color: #5d8af8;
+	font-size:28px;
+	font-weight: bold;
+}
+.userDate li>p:first-child{
+	color: #838383;
+	line-height: 44px;
+	margin-top: 12px;
+	font-weight: normal;
+	font-size: 26px;
+}
+.ldCenter{
+	width: 100%;
+	height: 80px;
+	overflow: hidden;
+	border-bottom: 3px solid #dddddd;
+}
+.ldCenter>span:nth-child(1){
+	float: left;
+	font-size: 30px;
+	line-height: 80px;
+	color: #838383;
+}
+.ldCenter>span:nth-child(2){
+	float: right;
+	color: #5d8af8;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 80px;
+}
+.LDDate {
+	overflow: hidden;
+	padding: 5px 0;
+}
+.LDDate li{
+	float: left;
+	width: 50%;
+	text-align: center;
+	position: relative;
+	height: 78px;
+	line-height: 78px;
+}
+.LDDate li>a{
+	display: block;
+	color: #838383;
+	font-size: 26px;
+}
+.LDDate>li:nth-child(1) .line{
+	position: absolute;
+	right:0 ;
+	top: 15px;
+	width: 2px;
+	height: 50px;
+	background: #cbcbcb;
+}
+.LDDate li:nth-child(1)>a{
+	padding-left: 70px;
+	background: url(../images/uCenterLD1.png) no-repeat 45px center;
+	background-size: 50px 50px;
+}
+.LDDate li:nth-child(2)>a{
+	padding-left: 65px;
+	background: url(../images/uCenterLD2.png) no-repeat 68px center;
+	background-size: 45px 50px;
+}
+.detailList{
+	background: #ff9736;
+}
+.partBlock{
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+}
+.blueJB{
+	position: absolute;
+	left: -18px;
+	top: -3px;
+	width: 0px;
+	height: 0px;
+	border-left: 26px solid rgba(0,0,0,0);
+	border-top:26px solid #65b9f7;
+	border-right: 26px solid rgba(0,0,0,0);
+	transform: rotate(135deg);
+	border-radius: 5px;
+}
+.userMenu{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	box-sizing: border-box;
+	box-shadow: 0px 5px 25px #ccc;
+}
+.userMenu li{
+	overflow: hidden;
+}
+.userMenu li>span{
+	float: left;
+	width: 95px;
+	height: 110px;
+}
+.userMenu li>span.icon1{
+	background: url(../images/icon_userC_conment.png) no-repeat 20px 34px;
+	background-size: 54px 54px;
+}
+.userMenu li>span.icon2{
+	background: url(../images/icon_userC_footprint.png) no-repeat 20px 34px;
+	background-size: 54px 54px;
+}
+.userMenu li>span.icon3{
+	background: url(../images/icon_userC_praise.png) no-repeat 20px 34px;
+	background-size: 54px 54px;
+}
+.userMenu li>span.icon4{
+	background: url(../images/icon_userC_stamp.png) no-repeat 20px 34px;
+	background-size: 54px 54px;
+}
+.userMenu li>a{
+	float: left;
+	width: 460px;
+	height: 110px;
+	line-height: 110px;
+	border-bottom: 1px solid #e0e0e0;
+	font-size: 32px;
+	color: #838383;
+	background: url(../images/icon1_userC_rightArrow.png) no-repeat 415px 35px;
+	background-size: 54px 54px;
+}
+.userMenu li:last-child>a{
+	border-bottom: 0px solid #e0e0e0;
+}
+/*个人中心    END*/
