@@ -60,14 +60,28 @@ public class SysGeneratorService {
 			List<Map<String, String>> columns = queryColumns(tableName);
 			//生成代码
             String[] arry = tableName.split("_");
-            log.info("arry======================================================="+ JSON.toJSONString(arry));
-            if(!"".equals(moduleName) && StringUtil.checkStr(moduleName) && arry!=null && arry.length>1){
-                tempmoduleName = arry[1];
-            }else {
-                tempmoduleName = moduleName;
-            }
-            log.info("tempmoduleName======"+tempmoduleName);
-			GenUtils.generatorCode(table, columns, zip,tempmoduleName);
+            if(tableName.startsWith("t_")){
+				log.info("arry======================================================="+ JSON.toJSONString(arry));
+				if(!"".equals(moduleName) && StringUtil.checkStr(moduleName) && arry!=null && arry.length>1){
+					tempmoduleName = arry[1];
+				}else {
+					tempmoduleName = moduleName;
+				}
+				log.info("tempmoduleName======"+tempmoduleName);
+				GenUtils.generatorCode(table, columns, zip,tempmoduleName);
+			}else{
+            	if(StringUtil.checkStr(moduleName) ){
+					tempmoduleName = moduleName;
+				}else{
+					if(arry!=null && arry.length>1){
+						tempmoduleName = arry[0];
+					}else{
+						tempmoduleName = tableName;
+					}
+				}
+				log.info("tempmoduleName======"+tempmoduleName);
+				GenUtils.generatorCode(table, columns, zip,tempmoduleName);
+			}
 		}
 		IOUtils.closeQuietly(zip);
 		return outputStream.toByteArray();

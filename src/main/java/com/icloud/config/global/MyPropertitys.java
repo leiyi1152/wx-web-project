@@ -21,6 +21,8 @@ public class MyPropertitys {
     private LongCoin longcoin;
     //龙币接口相关参数
     private Session session;
+    //用户登陆认证地址
+    private String usercheckurl;
 
 
     /**

@@ -94,6 +94,7 @@ public class ShiroConfig {
         filterMap.put("/frontpage/**", "anon");//h5端放行
         filterMap.put("/thirdInterfacePath/**", "anon");//放行第三放接口
         filterMap.put("/uploadpath/**", "anon");//上传的文件类直接放行
+        filterMap.put("/flow/**", "anon");//工作流放行
 
         filterMap.put("/druid/**", "anon");//sql监控
 
