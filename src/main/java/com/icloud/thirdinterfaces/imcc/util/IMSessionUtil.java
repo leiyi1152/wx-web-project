@@ -27,6 +27,7 @@ public class IMSessionUtil {
     public static final String _SESSION_PROPERTIES = "sessionProperties";
     public static final String _REQUEST_PROPERTIES = "requestProperties";
     public static final String _STR_REASON = "strReason";
+    public static final String _REASON = "reason";
     public static final String _CODE = "code";
 
 
@@ -74,7 +75,9 @@ public class IMSessionUtil {
         sb.append("<response>");
         sb.append("<result>");
         sb.append("<code>").append(valueMap.get(_CODE)).append("</code>");
-        sb.append("<strReason>").append(valueMap.get(_STR_REASON)).append("</strReason>");
+//        sb.append("<strReason>").append(valueMap.get(_STR_REASON)).append("</strReason>");
+        sb.append("<reason>").append(valueMap.get(_REASON)).append("</reason>");
+
         sb.append("</result>");
         sb.append("<properties>");
         sb.append("<session>");

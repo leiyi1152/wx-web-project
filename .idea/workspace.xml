@@ -21,145 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisCacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisCacheConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/WxUserLoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/WxUserLoginInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/imcc/UserCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/imcc/UserCheckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/imcc/util/IMSessionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/imcc/util/IMSessionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/s.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/css/center.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/css/myStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/css/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/banner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/displayBig.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/faceImg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/getPraise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/getPraise_no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/getPrise_yes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/getStamp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/getStamp_no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon1_leftArrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon1_userC_rightArrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_camera.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_closeWhite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_collect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_commont.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_picture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_pubulicSeccess.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_rankRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_time.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_topic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_unitRank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_userC_conment.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_userC_footprint.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_userC_praise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_userC_stamp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/icon_write.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/open.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/openBG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/pics.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/rank_no1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/rank_no2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/rank_no3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/ruleItem.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/sofa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/topic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/topicDetailPic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/turnRight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/uCenterBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/uCenterLD1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/uCenterLD2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/userEnter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/winBg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/images/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/receiveContentRanks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/receiveThumbsRanks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/scoreRanks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/subjectCollectDetail.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/subjectContentDetail.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/subjectIndex.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/subjectRanks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/subjectTopicDetail.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/htgc/js/subjectTopicDetailUtil.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/css/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/css/myStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/css/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/5-121204193935-51.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/JDCardHead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/actPic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/actPic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg_bMenu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg_card1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg_card2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg_card3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/bg_indexMenu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/buy_btn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/detailImg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/dragon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/exchangeFail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/goodsPicS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/guaAfter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/guaBefore.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/guaWhiteBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/hy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_arrow2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_card.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_cj.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_ldNum.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_manage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_minus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_shop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/icon_two11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/ly.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/pics.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/product.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/shuang11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/img/subscribe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/basepath.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/changeAlert.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/global.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/goodsDetaill.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/goodsNewDetaill.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/jquery-2.1.4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/myCardList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/myCenter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/myOrderList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/js/mydiscountCardList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/layer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/mobile/layer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/mobile/need/layer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/theme/default/icon-ext.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/theme/default/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/theme/default/layer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/theme/default/loading-0.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/theme/default/loading-1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/layer/theme/default/loading-2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/css/jquery-weui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/css/jquery-weui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/js/city-picker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/js/city-picker.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/js/jquery-weui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/js/jquery-weui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/js/swiper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/js/swiper.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/lib/fastclick.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/lib/jquery-2.1.4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/lib/weui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/lib/weui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/ldsc/weui/lib/zepto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/front/retail/tologinpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/front/retail/tologinpage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -347,6 +210,7 @@
       <workItem from="1594091789258" duration="3889000" />
       <workItem from="1594168728967" duration="24728000" />
       <workItem from="1594255262115" duration="15726000" />
+      <workItem from="1594601075734" duration="6901000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -412,22 +276,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594092020696" />
-    <state width="1493" height="356" key="GridCell.Tab.0.bottom" timestamp="1594287603418">
+    <state width="1493" height="216" key="GridCell.Tab.0.bottom" timestamp="1594609649368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="356" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594287603418" />
-    <state width="1493" height="356" key="GridCell.Tab.0.center" timestamp="1594287603417">
+    <state width="1493" height="216" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594609649368" />
+    <state width="1493" height="216" key="GridCell.Tab.0.center" timestamp="1594609649368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="356" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594287603417" />
-    <state width="1493" height="356" key="GridCell.Tab.0.left" timestamp="1594287603417">
+    <state width="1493" height="216" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594609649368" />
+    <state width="1493" height="216" key="GridCell.Tab.0.left" timestamp="1594609649368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="356" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594287603417" />
-    <state width="1493" height="356" key="GridCell.Tab.0.right" timestamp="1594287603417">
+    <state width="1493" height="216" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594609649368" />
+    <state width="1493" height="216" key="GridCell.Tab.0.right" timestamp="1594609649368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="356" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594287603417" />
+    <state width="1493" height="216" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594609649368" />
     <state width="1493" height="356" key="GridCell.Tab.1.bottom" timestamp="1594287603418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

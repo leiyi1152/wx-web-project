@@ -19,7 +19,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,26 +71,27 @@ public class UserCheckController {
                 user = (TRetailConfirn) obj;
             }
 
+
+//            user = new TRetailConfirn();
             //返回结果
             Map<String, Object> resultMap = new HashMap<String, Object>();
             Map<String,String> sessionMap = new HashMap<String, String>(1);
             String resultxml = null;
             if(user==null){
-                resultMap.put(IMSessionUtil._CODE, "1");
-                resultMap.put(IMSessionUtil._STR_REASON, "");
+                resultMap.put(IMSessionUtil._CODE, "0");
+                resultMap.put(IMSessionUtil._REASON,"success");
                 //组装返回的连接
                 String userLoginCheckUrl = "<$LINK_URL|点击进入登陆认证|"+myPropertitys.getUsercheckurl()+" $>";
-                userLoginCheckUrl = URLEncoder.encode(userLoginCheckUrl,"GBK");
+//                userLoginCheckUrl = URLEncoder.encode(userLoginCheckUrl,"GBK");
                 sessionMap.put("inputchooseresult", userLoginCheckUrl);
                 resultMap.put(IMSessionUtil._SESSION_PROPERTIES, sessionMap);
-                resultxml = IMSessionUtil.createXml(resultMap, false);//失败 返回认证地址
+                resultxml = IMSessionUtil.createXml(resultMap, true);//失败 返回认证地址
             }else{
                 resultMap.put(IMSessionUtil._CODE, "0");
-                resultMap.put(IMSessionUtil._STR_REASON, "");
-//                resultxml = IMSessionUtil.createXml(resultMap, false,sessionXml);//成功原样返回
+                resultMap.put(IMSessionUtil._REASON,"success");
                 sessionMap.put("inputchooseresult","success");
                 resultMap.put(IMSessionUtil._SESSION_PROPERTIES, sessionMap);
-                resultxml = IMSessionUtil.createXml(resultMap, false);//成功 返回认证地址
+                resultxml = IMSessionUtil.createXml(resultMap, true);//成功 返回认证地址
             }
             response.setCharacterEncoding("gbk");
             try {
