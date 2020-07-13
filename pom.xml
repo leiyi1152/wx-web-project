@@ -532,6 +532,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>usercheck</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

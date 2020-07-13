@@ -4,6 +4,7 @@ package com.icloud.config.interceptor;
 import com.icloud.common.AjaxRequestUitl;
 import com.icloud.common.util.StringUtil;
 import com.icloud.config.global.Constants;
+import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.wx.entity.WxUser;
 import com.icloud.modules.wx.service.WxUserService;
 import me.chanjar.weixin.common.api.WxConsts;
@@ -22,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.Date;
 
 
@@ -42,6 +42,9 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
 
     @Autowired
     private WxMpService wxMpService;
+
+	@Autowired
+	private MyPropertitys myPropertitys;
 
 //	//微信登录方式 请求微信服务器
 //	private String code_user = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
@@ -70,6 +73,7 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
             String code = request.getParameter("code");
             if(StringUtils.isBlank(code)) {
                 sendRedirectToWx(request,response);
+				return false;
             }else {
                 WxMpOAuth2AccessToken wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
                 WxMpUser wxMpUser = wxMpService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
@@ -79,6 +83,7 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
                     return false;
                 } else {
                     session.setAttribute("wx_user", user);
+					session.setAttribute("service_domain", myPropertitys.getService_domain());
                 }
             }
         }

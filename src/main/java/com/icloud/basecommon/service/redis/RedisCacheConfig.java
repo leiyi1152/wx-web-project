@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
 
 @Configuration
 @EnableCaching
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1600, redisNamespace = "spring:session:activity")
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1600, redisNamespace = "spring:session:usercheck")//跟配置一致 mypropertis session namespace
 public class RedisCacheConfig extends CachingConfigurerSupport {
 
     @Autowired
