@@ -81,7 +81,7 @@ public class UserCheckController {
                 resultMap.put(IMSessionUtil._CODE, "0");
                 resultMap.put(IMSessionUtil._REASON,"success");
                 //组装返回的连接
-                String userLoginCheckUrl = "<$LINK_URL|点击进入登陆认证|"+myPropertitys.getUsercheckurl()+" $>";
+                String userLoginCheckUrl = "<$LINK_URL|点击进入登陆认证|"+myPropertitys.getUsercheckurl()+"?openid="+openid+" $>";
 //                userLoginCheckUrl = URLEncoder.encode(userLoginCheckUrl,"GBK");
                 sessionMap.put("inputchooseresult", userLoginCheckUrl);
                 resultMap.put(IMSessionUtil._SESSION_PROPERTIES, sessionMap);

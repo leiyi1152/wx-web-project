@@ -28,16 +28,32 @@ var vm = new Vue({
                 url:fontbaseURL+"/frontpage/retail/userLogin/login",
                 type:"get",
                 async:true,
-                data:{"userName":vm.userName,"passwd":passwd},
+                data:{"userName":vm.userName,"passwd":passwd,"openid":T.p("openid")},
                 dataType:"json",
                 success:function (data){
                     //alert(JSON.stringify(data));
                     console.log("data=="+JSON.stringify(data));
                     if(data.code==0){
-                        alert('登陆成功');
+                        alert('认证成功。');
                         // window.opener=null;
                         // window.open('',self);
-                        window.close();
+                        //window.close();
+                        try {
+                            setTimeout(function() {
+                                //这个可以关闭安卓系统的手机
+                                document.addEventListener(
+                                    "WeixinJSBridgeReady",
+                                    function() {
+                                        WeixinJSBridge.call("closeWindow");
+                                    },
+                                    false
+                                );
+                                //这个可以关闭ios系统的手机
+                                WeixinJSBridge.call("closeWindow");
+                            }, 3000);
+                        }catch (e) {
+                            console.log("e=="+JSON.stringify(e));
+                        }
                         //WeixinJSBridge.invoke('closeWindow',{},function(res){
                             //alert(res.err_msg);
                        // });

@@ -97,6 +97,7 @@ public class ShiroConfig {
         filterMap.put("/flow/**", "anon");//工作流放行
 
         filterMap.put("/druid/**", "anon");//sql监控
+        filterMap.put("/modules/retail/tologinpage.html", "anon");//用户认证路径放行
 
         filterMap.put("/**", "authc");
         shiroFilter.setFilterChainDefinitionMap(filterMap);

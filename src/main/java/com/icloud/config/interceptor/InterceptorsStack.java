@@ -43,7 +43,7 @@ class InterceptorsStack implements WebMvcConfigurer {
         if("local".equals(myPropertitys.getActivein())){
             registry.addInterceptor(loginInterceptor_local).addPathPatterns(new String[]{"/frontpage/**"});
         }else{
-            registry.addInterceptor(wxUserLoginInterceptor).addPathPatterns(new String[]{"/frontpage/**"});
+            registry.addInterceptor(wxUserLoginInterceptor).addPathPatterns(new String[]{"/frontpage/**"}).excludePathPatterns(new String[]{"/frontpage/retail/userLogin/**"});
         }
 
     }

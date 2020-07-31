@@ -7,7 +7,6 @@ import com.icloud.common.R;
 import com.icloud.common.util.StringUtil;
 import com.icloud.modules.retail.entity.TRetailConfirn;
 import com.icloud.modules.retail.service.TRetailConfirnService;
-import com.icloud.modules.wx.entity.WxUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,15 +39,17 @@ public class UserLoginController {
     private RedisService redisService;
 
     @RequestMapping("/tologinpage")
-    public String tologinpage(){
+    public String tologinpage(String openid){
+        log.info("tologinpage_openid====="+ openid);//
         return "modules/front/retail/tologinpage";
     }
 
     @RequestMapping("/login")
     @ResponseBody
-    public R login(String userName,String passwd){
+    public R login(String userName,String passwd,String openid){
         try {
-            WxUser user = (WxUser) request.getSession().getAttribute("wx_user");
+            log.info("openid====="+ openid);//
+//            WxUser user = (WxUser) request.getSession().getAttribute("wx_user");
             log.info("login_params: userName=y="+ userName+"; passwd=="+passwd);//密码添加用户的时候MD5加密；传入参数时页面加密
             if(!StringUtil.checkStr(userName)){
                 return R.error("用户名不能为空");
@@ -68,17 +69,20 @@ public class UserLoginController {
                 log.info("密码不正确");
                 return R.error("密码不正确");
             }
-            if(StringUtil.checkStr(retail.getOpenid()) && !retail.getOpenid().equals(user.getOpenid())){
+//            if(StringUtil.checkStr(retail.getOpenid()) && !retail.getOpenid().equals(user.getOpenid())){
+            if(StringUtil.checkStr(retail.getOpenid()) && !retail.getOpenid().equals(openid)){
                 log.info("当前登陆账户已绑定其他微信账户");
                 return R.error("当前登陆账户已绑定其他微信账户");
             }
-            retail.setOpenid(user.getOpenid());
+            retail.setOpenid(openid);
+//            retail.setOpenid(user.getOpenid());
             retail.setModifyTime(new Date());
             retail.setLastLoginIp(IpUtil.getIpAddr(request));
             retailConfirnService.updateById(retail);
             //存储改用户到redis
-            redisService.set(user.getOpenid(),retail,3000L);//3000秒
-            log.info("登陆成功:=="+userName+"; openid=="+user.getOpenid());
+//            redisService.set(user.getOpenid(),retail,3000L);//3000秒
+            redisService.set(openid,retail,3000L);//3000秒
+            log.info("登陆成功:=="+userName+"; openid=="+openid);
             return R.ok();
         } catch (Exception e) {
             e.printStackTrace();

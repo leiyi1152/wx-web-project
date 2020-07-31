@@ -1,0 +1,1603 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- IE=Edge 强制使用浏览器的最高版本模式进行渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <script type="text/javascript" src="${request.contextPath}/statics/wxmp/js/jdUtil.js"></script>
+    <script type="text/javascript" src="${request.contextPath}/statics/wxmp/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript"  src="${request.contextPath}/statics/wxmp/js/modernizr.custom.js"></script>
+    <script type="text/javascript"  src="${request.contextPath}/statics/wxmp/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${request.contextPath}/statics/wxmp/js/json2.js"></script>
+    <link href="${request.contextPath}/statics/wxmp/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="<${request.contextPath}/statics/wxmp/css/bootstrap/bootstrap.css">
+    <style type="text/css">
+        .main_menu {
+            width: 52%;
+            border: 1px solid #787878;
+            margin-top: 10px;
+            background-color: #F5F5F5;
+            float:left;
+            display:inline;
+            border-radius: 5px;
+        }
+
+        #item_config {
+            width: 45%;
+            margin-top: 10px;
+            border: 1px solid;
+            float:left;
+            margin-left:2%;
+            border-radius: 5px;
+        }
+
+        .form-horizontal {
+            margin: 0px;
+
+        }
+
+        .form-actions {
+            margin: 0px;
+            padding: 15px 0px;
+        }
+
+        #item_config .form-horizontal {
+            margin-top: 10px;
+
+        }
+
+        .column {
+            display: inline-block;
+            width: 31.5%;
+            margin-top: 10px;
+        }
+
+        .tab {
+            background: none repeat scroll 0 0 #FFFFFF;
+            border: 1px solid #8AA8BD;
+            border-radius: 5px;
+            list-style: none outside none;
+            box-shadow: 0 0 5px #9AB8CD;
+            margin: 0 0 10px 10px;
+        }
+
+        .tab li {
+            line-height: 20px;
+        }
+
+        .tab li div {
+            height: 20px;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #8aa8bd;
+            border-bottom: 1px solid #e6e8ea;
+        }
+
+        .bar {
+            background-color: #FFFFFF;
+            border: 1px solid #8AA8BD;
+            border-radius: 7px;
+            box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+            color: #8AA8BD;
+            cursor: pointer;
+            padding: 10px;
+            font-weight: bold;
+            margin: 0 0 10px 25px;
+            margin: 0 0 10px 10px;
+        }
+
+        .form-horizontal .control-label {width: 80px;}
+        .form-horizontal .controls {margin-left: 100px;}
+
+        li:hover {
+            background: #f0f8f8;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: #f3f8f8;
+        }
+
+        .controls input {width: 80%;}
+        .controls select {width: 80%;}
+        .controls textarea {width: 80%;}
+
+        .moveleft {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px;
+
+        }
+        .moveleft:hover{
+            background:gray;
+
+            cursor: pointer;
+        }
+        .moveright {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 5px 5px 10px 10px;
+        }
+        .moveright:hover {
+            background: gray;
+            cursor: pointer;
+        }
+
+        #edit-menu {padding-left:10px; text-align:center;}
+
+        #moveup,#movedown {margin-right: 5%; cursor:pointer;}
+        #moveleft,#moveright  {margin-left:5%; cursor:pointer;}
+
+        #materialTitle {width: 60%}
+        #cust_btn {width: 20%}
+    </style>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div class="main_menu" >
+        <s:iterator value="#request.menuItemList" status="status" var="item">
+            <div id="menu_column_${status.index+1 }" class="column" tabindex="1">
+                <ul class="tab" id="tab_${status.index+1 }">
+                    <input type="hidden" class="toBar" value="bar_${status.index+1 }">
+                    <s:iterator value="subItemList" var="inner" status="st">
+                        <li onclick="selectItem(this)">
+                            <div class="name">
+                                <span><s:property value="#inner.name" /> </span>
+                                <s:if test="#inner.name!=''">
+                                    <a href="javascript:deleteMenuItem();" title="删除"
+                                       style="float:right"><img
+                                            src="<%=basePath%>images/ext-icons/delete.gif" border="0">
+                                    </a>
+                                </s:if>
+                            </div>
+                            <input type="hidden" class="type" name="type" value='<s:property value="#inner.type"/>'></input>
+                            <input type="hidden" class="key" name="key"   value='<s:property value="#inner.key"/>'></input>
+                            <input type="hidden" class="url" name="url" value='<s:property value="#inner.url"/>'></input>
+                            <input type="hidden" class="menuName" name="menuName" value='<s:property value="#inner.name"/>'></input>
+                            <input type="hidden" class="isSub" value="true">
+                            <input type="hidden" name="sindex" class="sindex" value="${st.index+1 }" />
+                            <input type="hidden" name="index" class="index" value="${status.index+1 }" />
+                        </li>
+                    </s:iterator>
+                </ul>
+                <div class="bar" id="bar_${status.index+1 }"
+                     onclick="selectItem(this)">
+                    <div class="name">
+                        <span> ${name }</span>&nbsp;
+                        <s:if test="name!=null">
+                            <a href="javascript:deleteMenuItem();" style="float:right"
+                               title="删除"><img
+                                    src="<%=basePath%>images/ext-icons/delete.gif" border="0">
+                            </a>
+                        </s:if>
+                    </div>
+                    <input type="hidden" class="toTab" value="tab_${status.index+1 }">
+                    <input type="hidden" name="type" class="type" value="${type }">
+                    <input type="hidden" name="key" class="key" value="${key }" />
+                    <input type="hidden" name="url" class="url" value="${url }" />
+                    <input type="hidden" name="menuName" class="menuName" value="${name }" />
+                    <input type="hidden" class="isSub" value="false">
+                    <input type="hidden" name="index" class="index" value="${status.index+1 }" />
+                    <input type="hidden" name="sindex" class="sindex" value="0" />
+                </div>
+            </div>
+        </s:iterator>
+    </div>
+
+
+    <div id="item_config" >
+        <div class="form-horizontal">
+            <div id="modify-fail-alert" class="alert hide">
+                <div id="alert-text" style="text-align: center">
+                    <strong>提示！</strong> 保存子菜单失败,请确认是否输入正确。
+                </div>
+            </div>
+            <div id="delete-success-alert" class="alert hide">
+                <div id="alert-text" style="text-align: center">
+                    <strong>提示！</strong> 删除成功！
+                </div>
+            </div>
+            <div id="delete-fail-alert" class="alert hide">
+                <div id="alert-text" style="text-align: center">
+                    <strong>提示！</strong> 删除失败！
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="item-name">名称：</label>
+                <div class="controls">
+                    <input type="text" id="item-name" placeholder="Name">
+                </div>
+            </div>
+            <div class="control-group" id="item-type-group">
+                <label class="control-label" for="item-type">类型：</label>
+                <div class="controls">
+                    <select id="item-type">
+                        <option value="click">点击</option>
+                        <option value="view">跳转url</option>
+                        <option value="scancode_push">扫描</option>
+                        <option value="scancode_waitmsg">扫描并提示</option>
+                        <option value="pic_sysphoto">系统拍照</option>
+                        <option value="pic_photo_or_album">拍照或相册</option>
+                        <option value="pic_weixin">微信相册</option>
+                        <option value="location_select">地理位置</option>
+                        <option value="miniprogram">小程序</option>
+                        <option value="menu">主菜单</option>
+                    </select>
+                </div>
+            </div>
+            <!--
+            <div class="control-group" id="item-key-group">
+                <label class="control-label" for="item-key">Key：</label>
+                <div class="controls">
+                    <input type="text" id="item-key" placeholder="Key"> <span></span>
+                </div>
+            </div>
+             -->
+            <div class="control-group" id="item-isauth-group">
+                <label class="control-label" for="item-url">Auth2.0：</label>
+                <div class="controls">
+                    <span><input type="radio" id="radio1" style="width:30px;" class="radio" name="isAuth" value="1" /> 使用</span>
+                    <span><input type="radio" id="radio2" style="width:30px;" class="radio" name="isAuth" value="2" checked /> 不使用</span>
+
+                </div>
+            </div>
+            <div class="control-group" id="item-url-group">
+                <label class="control-label" for="item-url">Url：</label>
+                <div class="controls">
+                    <!-- <input type="text" id="item-url" placeholder="Url"> -->
+                    <textarea rows="3" class="input-xlarge" id="item-url"
+                              placeholder="Url"></textarea>
+                </div>
+            </div>
+
+            <div class="control-group" id="item-click-type">
+                <label class="control-label" for="click-type">消息类型：</label>
+                <div class="controls">
+                    <select onchange="selectClickType(this)" name="msgType"
+                            id="msgType">
+                        <option value="3">文本类型</option>
+                        <option value="1">流程跳转</option>
+                        <option value="2">素材</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" id="item-text-group">
+                <label class="control-label" for="text-content">文本内容：</label>
+                <div class="controls">
+                    <textarea rows="3" class="input-xlarge" id="text-content"></textarea>
+                </div>
+            </div>
+            <div class="control-group" id="item-directory-group">
+                <label class="control-label" for="item-directory">流程目录：</label>
+                <div class="controls">
+                    <select name="directoryId" id="directoryId"
+                            onchange="change_dir()">
+                        <option value="0">--请选择--</option>
+                        <s:iterator value="#request.dirs">
+                            <option value="<s:property value='id'/>">
+                                <s:property value='text' />
+                            </option>
+                        </s:iterator>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group" id="item-process-group">
+                <label class="control-label" for="item-processId">跳转流程：</label>
+                <div class="controls">
+                    <input type="hidden" id="processIdHidden"> <select
+                        name="item-processId" id="item-processId">
+                    <option value="0">--请选择--</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="control-group" id="item-material-group">
+                <label class="control-label" for="materialId">素材：</label>
+                <div class="controls">
+                    <input type="hidden" id="materialId">
+                    <input type="text" id="materialTitle" readonly>
+                    <input type="button" id="cust_btn" class="btn" value="选择" onclick="selMaterial()">
+                </div>
+            </div>
+            <!-- <div class="control-group">
+            <div class="controls">
+                <button onclick="modifyMenuItem()" class="btn">确定</button>
+            </div>
+        </div> -->
+
+            <form name="actionForm" class="form-horizontal"
+                  action="weixin/weixinMenu!editMenu.action" method="post">
+                <input type="hidden" id="hostTel" name="hostTel" value="${hostTel }">
+                <input type="hidden" id="loginSign" name="loginSign" value="${loginSign }">
+                <input type="hidden" id="imNumber" name="imNumber" value="${imNumber }">
+                <input type="hidden" id="imType" name="imType" value="${imType }">
+                <div id="edit-menu" class="form-actions" >
+						<span id="moveup">
+						<i class="fa fa-arrow-up fa-lg" id="move_up"></i>
+						</span>
+                    <span id="movedown">
+							<i class="fa fa-arrow-down fa-lg" id="move_down"></i>
+						</span>
+                    <input type="hidden" name="jsonMenu" id="json-menu" />
+                    <input type="button" class="btn btn-primary" onclick="submitMenu()" value="保存菜单">
+                    <input type="button" class="btn" onclick="menuCancel()" value="返回">
+                    <span id="moveleft">
+						<i class="fa fa-arrow-left fa-lg" id="move_left"></i>
+						</span>
+                    <span id="moveright">
+							<i class="fa fa-arrow-right fa-lg" id="move_right"></i>
+						</span>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*
+    * javascript从这里开始执行
+    */
+    $(function() {
+        $("#item-url-group").hide();
+        $("#item-process-group").hide();
+        $("#item-directory-group").hide();
+        $("#item-material-group").hide();
+        $("#item-isauth-group").hide();
+        $("#moveup").show();
+        $("#movedown").show();
+        $("#moveleft").show();
+        $("#moveright").show();
+
+        //默认没有选择菜单，让它不能输入
+        $("#item-name").prop("disabled", true);
+        $("#item-type").prop("disabled", true);
+        //$("#item-key").prop("disabled", true);
+        $("#msgType").prop("disabled", true);
+        $("#text-content").prop("disabled", true);
+
+        //如果bar不是menu类型，让子菜单不可以选
+        for (var i=1; i<=3; i++) {
+            if ($("#bar_" + i).children(".type").val() != "menu") {
+                $("#tab_" + i).css("background-color", "#F5F5F5");
+                var lis = $("#tab_" + i).children("li");
+                for (var j=0; j<lis.length; j++) {
+                    var li = lis.get(j);
+                    $(li).unbind("click");
+                    $(li).hover(function() {
+                        $(this).css("cursor", "auto");
+                    });
+                }
+            }
+        }
+
+        //增加事件监听
+        $("#item-type").change(function(){
+            var selectedItem = $('.selected');
+            var item_type = $("#item-type").val();
+            //菜单类型
+            if(item_type == "menu") {
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-isauth-group').hide();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-click-type').hide();
+                $('#item-material-group').hide();
+                $('#item-text-group').hide();
+                $("#moveup").hide();
+                $("#movedown").hide();
+            }
+            //click 类型
+            else if(item_type == "click") {
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-click-type').show();
+                $('#item-text-group').show();
+                //$("#msgType").find("option[value='3']").attr("selected",true);
+                var msgType = document.getElementById("msgType");
+                for (var i=0; i<msgType.options.length; i++) {
+                    if (msgType[i].value == 3) {
+                        msgType[i].selected=true;
+                        break;
+                    }
+                }
+                $("#text-content").val("");
+            }
+            //view 类型
+            else if (item_type == "view"){
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-isauth-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').show();
+                $('#item-click-type').hide();
+                $('#item-material-group').hide();
+                $('#item-text-group').hide();
+                $("#moveleft").hide();
+                $("#moveright").hide();
+            }
+            else {
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-isauth-group').hide();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-click-type').hide();
+                $('#item-material-group').hide();
+                $('#item-text-group').hide();
+                $("#moveleft").hide();
+                $("#moveright").hide();
+            }
+        })
+    });
+
+    var flag = 1;
+    function selectItem(obj) {
+        if (flag == 1) {
+            $("#item-name").prop("disabled", false);
+            $("#item-type").prop("disabled", false);
+            //$("#item-key").prop("disabled", false);
+            $("#item-processId").prop("disabled", false);
+            $("#msgType").prop("disabled", false);
+            $("#text-content").prop("disabled", false);
+            $("#moveup").show();
+            $("#movedown").show();
+            $("#moveleft").show();
+            $("#moveright").show();
+            flag = 0;
+        }
+        //判断是否是可选的菜单，可选则设置
+        if ($(obj).css("cursor") != "auto") {
+            $(".selected").removeClass('selected');
+            $(obj).toggleClass('selected');
+
+            setItemConfig($(obj));
+        }
+    }
+
+    //选择点击类型
+    function selectClickType(sel) {
+        var value = sel.options[sel.selectedIndex].value;
+        //流程跳转
+        if (value == 1) {
+            $("#item-process-group").show();
+            $("#item-directory-group").show();
+            $("#item-text-group").hide();
+            $("#item-material-group").hide();
+        }
+        //素材
+        if (value == 2) {
+            $("#item-process-group").hide();
+            $("#item-directory-group").hide();
+            $("#item-text-group").hide();
+            $("#item-material-group").show();
+        }
+        //文本
+        if (value == 3) {
+            $("#item-process-group").hide();
+            $("#item-directory-group").hide();
+            $("#item-text-group").show();
+            $("#item-material-group").hide();
+        }
+
+    }
+
+    //点击菜单项时
+    function setItemConfig(obj) {
+        $("#delete-success-alert").hide();
+        $("#item-type").attr("disabled", false);
+
+        var name = obj.children('.name').children('span').text();
+        var isSub = obj.children('.isSub').val();
+        if (isSub == "true") {
+            $("#item-type").find("option[value='menu']").remove();//选择子菜单项时，删除menu选项
+            $("#moveup").show();
+            $("#movedown").show();
+            $("#moveleft").show();
+            $("#moveright").show();
+        }
+        else if (isSub == "false") {
+            if ($("#item-type").find("option[value='menu']").length < 1) {
+                $("#item-type").append('<option value="menu">主菜单</option>');	//选择父菜单项时，增加menu选项
+                $("#moveup").hide();
+                $("#movedown").hide();
+                $("#moveleft").show();
+                $("#moveright").show();
+            }
+        }
+        if (name.trim() == "") {		//选中的菜单项为空
+            if (isSub == "true") {
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-click-type').show();
+                $('#item-text-group').show();
+                $('#item-material-group').hide();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $("#moveup").hide();
+                $("#movedown").hide();
+                $("#moveleft").hide();
+                $("#moveright").hide();
+
+                $("#item-name").val("");
+                $("#item-url").val("");
+                //$("#item-key").val("");
+                $("#item-type").get(0).selectedIndex = 0;
+                $("#msgType").get(0).selectedIndex = 0;
+                $("#text-content").val("");
+
+            }
+            else if (isSub == "false") {
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-type-group').show();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $("#moveup").hide();
+                $("#movedown").hide();
+                $("#moveleft").hide();
+                $("#moveright").hide();
+
+
+                $("#item-name").val("");
+                $("#item-url").val("");
+                //$("#item-key").val("");
+                $("#item-processId").val("");
+                $("#item-type").get(0).selectedIndex = 8;
+            }
+        }
+        else {			//选中的菜单项不为空
+            var type = obj.children("input.type").val();
+            if (type == 'click') {
+                var key = obj.children("input.key").val();
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 0;
+                //$("#item-key").val(key);
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-click-type').show();
+
+
+                //根据key获得keyToCmdId跟processId
+                var uri = '<%=basePath%>weixin/weixinMenu!getKeyToCmd.action';
+                $.post(uri, {
+                    'type' : 'click',
+                    'key': encodeURI(key)
+                }, function(json) {
+                    result = eval("(" + json + ")");
+                    if (result.status == "success") {
+                        if (result.msgType == "1") {
+                            $("#msgType").val(1);
+                            $("#item-directory-group").show();
+                            $("#directoryId").find("option[value='" + result.directoryId + "']").attr("selected",true);
+                            $("#processIdHidden").val(result.processId);
+                            change_dir();
+                            $("#item-process-group").show();
+                            //$("#item-processId").val(result.processId);
+                            $("#item-text-group").hide();
+                            $("#item-material-group").hide();
+                        }
+                        if (result.msgType == "2") {			//素材
+                            $("#msgType").val(2);
+                            $("#materialTitle").val(result.materialTitle);
+                            $("#materialId").val(result.materialId);
+                            $("#item-process-group").hide();
+                            $("#item-directory-group").hide();
+                            $("#item-text-group").hide();
+                            $("#item-material-group").show();
+                        }
+                        if (result.msgType == "3") {
+                            $("#msgType").val(3);
+                            $("#text-content").val(result.textContent);
+                            $("#item-process-group").hide();
+                            $("#item-directory-group").hide();
+                            $("#item-text-group").show();
+                            $("#item-material-group").hide();
+                        }
+                    }
+                    else {
+                        $("#item-processId").val("");
+                        $("#item-process-group").hide();
+                        $("#item-directory-group").hide();
+                        $("#item-text-group").show();
+                        $("#item-material-group").hide();
+                    }
+                });
+
+            }
+            else if (type == 'view') {
+                var url = obj.children("input.url").val();
+
+                $('#item-name-group').show();
+                $('#item-type-group').show();
+                $('#item-isauth-group').show();
+                $('#item-url-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                var imNumber = $("#imNumber").val();
+                var uri = '<%=basePath%>weixin/weixinMenu!getKeyToCmd.action';
+                $.post(uri, {
+                    'type' : 'view',
+                    'key': encodeURI(url),
+                    'imNumber' : imNumber
+                }, function(json) {
+                    result = eval("(" + json + ")");
+                    if (result.status == "success") {
+                        $("#item-name").val(name);
+                        $("#msgType").val(4);
+                        if (result.isAuth == 1) {
+                            document.getElementById("radio1").checked=true;
+                            document.getElementById("radio2").checked=false;
+                        } else if (result.isAuth == 2) {
+                            document.getElementById("radio1").checked=false;
+                            document.getElementById("radio2").checked=true;
+                        }
+                        $("#item-url").val(result.url);
+                        $("#item-type").get(0).selectedIndex = 1;
+                    }
+                    else {
+                        $("#item-name").val(name);
+                        $("#item-type").get(0).selectedIndex = 1;
+                        $("#item-url").val(result.url);
+                    }
+                });
+
+            }
+            else if (type == 'menu') {
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+                $("#item-type").attr("disabled","disabled");
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 8;
+            }
+            else if (type == 'scancode_push'){
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 2;
+            }
+            else if (type == 'scancode_waitmsg'){
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 3;
+            }
+            else if (type == 'pic_sysphoto'){
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 4;
+            }
+            else if (type == 'pic_photo_or_album'){
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 5;
+            }
+            else if (type == 'pic_weixin'){
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 6;
+            }
+            else if (type == 'location_select'){
+                $('#item-name-group').show();
+                $('#item-process-group').hide();
+                $("#item-directory-group").hide();
+                $('#item-url-group').hide();
+                $('#item-isauth-group').hide();
+                $('#item-type-group').show();
+                $('#item-click-type').hide();
+                $('#item-text-group').hide();
+                $('#item-material-group').hide();
+
+                $("#item-name").val(name);
+                $("#item-type").get(0).selectedIndex = 7;
+            }
+        }
+    }
+
+    //修改选中的选中项
+    function modifyMenuItem() {
+        var imNumber = $("#imNumber").val();
+        var selectedItem = $('.selected');
+        var name = $("#item-name").val().trim();
+        var type = $("#item-type").val().trim();
+        //var key = $("#item-key").val().trim();
+        var key = generateKey(selectedItem, imNumber);
+        var processId = $("#item-processId").val();
+        var msgType = $("#msgType").val();
+        var url = $("#item-url").val().trim();
+        var materialId = $("#materialId").val();
+        var textContent = $("#text-content").val().trim();
+        if (name == "" || type == "") {
+            $("#delete-success-alert").hide();
+            $("#delete-fail-alert").hide();
+            $("#modify-fail-alert").show();
+            return;
+        }
+        selectedItem.children("div").children("span").text(name);
+        selectedItem.children("input.type").val(type);
+
+        if (type == "click") {
+            selectedItem.children("input.key").val(key);
+            var uri = '<%=basePath%>weixin/weixinMenu!updateKeyToCmd.action';
+            $.post(uri, {
+                'type' : 'click',
+                'menuName' : encodeURI(name, "utf-8"),
+                'key': encodePlus(encodeURI(key, "utf-8")),
+                'msgType' : msgType,
+                'processId' : processId,
+                'materialId' : materialId,
+                'textContent' : textContent
+            }, function (json){
+                result = eval("(" + json + ")");
+                if(result.status=="success"){
+                    $("#delete-success-alert").hide();
+                    $("#delete-fail-alert").hide();
+                    $("#modify-fail-alert").hide();
+                } else {
+                    alert("保存失败!");
+                }
+            });
+            return;
+        }
+        else if (type == "view") {
+            if (url == "") {
+                $("#delete-success-alert").hide();
+                $("#delete-fail-alert").hide();
+                $("#modify-fail-alert").show();
+            }
+            else {
+                var uri = '<%=basePath%>weixin/weixinMenu!updateKeyToCmd.action';
+                $.post(uri, {
+                    'type' : 'view',
+                    'menuName' : encodeURI(name, "utf-8"),
+                    'imNumber' : imNumber,
+                    'url': decorateHttp(encodePlus(encodeURI(url, "utf-8")))
+                }, function (json){
+                    result = eval("(" + json + ")");
+                    if(result.status=="success"){
+                        $("#delete-success-alert").hide();
+                        $("#delete-fail-alert").hide();
+                        $("#modify-fail-alert").hide();
+                        selectedItem.children("input.url").val(url);
+                    } else {
+                        alert("保存失败!");
+                    }
+                });
+            }
+            return;
+        }
+        else if (type == "menu") {
+            var tabId = selectedItem.children(".toTab").val();
+            var tab = $("#" + tabId);
+            $(tab).css("background-color", "#ffffff");
+            var lis = $(tab).children("li");
+            for (var i=0; i<lis.length; i++) {
+                var li = lis.get(i);
+                //$(li).bind("click", selectItem);
+                $(li).hover(function() {
+                    $(this).css("cursor", "pointer");
+                    $(this).css("background-color", "#f0f8f8");
+                }, function() {
+                    $(this).css("background-color", "#ffffff");
+                });
+            }
+        }
+        else {
+            selectedItem.children("input.key").val(key);
+            var uri = '<%=basePath%>weixin/weixinMenu!updateKeyToCmd.action';
+            $.post(uri, {
+                'type' : type,
+                'menuName' : encodeURI(name, "utf-8"),
+                'key': encodePlus(encodeURI(key, "utf-8")),
+                'msgType' : msgType
+            }, function (json){
+                result = eval("(" + json + ")");
+                if(result.status=="success"){
+                    $("#delete-success-alert").hide();
+                    $("#delete-fail-alert").hide();
+                    $("#modify-fail-alert").hide();
+                } else {
+                    alert("保存失败!");
+                }
+            });
+        }
+
+        $("#delete-success-alert").hide();
+        $("#delete-fail-alert").hide();
+        $("#modify-fail-alert").hide();
+    }
+
+    //删除选中的menu项
+    function deleteMenuItem() {
+        var imNumber = $("#imNumber").val();
+        var selectedItem = $('.selected');
+        var isSub = selectedItem.children('.isSub').val();
+        var name = selectedItem.children("div").text().trim();
+        var type = selectedItem.children("input.type").val();
+        var key = selectedItem.children("input.key").val();
+        if (type == 'view') {
+            var url = selectedItem.children("input.url").val().trim();
+            key = imNumber + "_" + url;
+        }
+        if(isSub =="true"){
+            if (isLast(selectedItem)) {
+                alert("不允许删除，主菜单至少要有一个子菜单!");
+                return;
+            }
+            if (!confirm("是否确认删除?")) {
+                return;
+            }
+        } else{
+            key = subkeys(selectedItem);
+            if (!confirm("是否确认删除？当前项为主菜单，如果确认删除，其子项都将被删除")) {
+                return;
+            }
+        }
+        var old = generateMenu();
+        resetSelectedItem();		//将选中项的hidden input设为空
+        resetMenuConfig();			//将menu config设置为空
+        var output = generateMenu();
+        var uri = '<%=basePath%>weixin/weixinMenu!deleteKeyToCmd.action';
+        $.post(uri, {
+            'key': encodePlus(encodeURI(key, "utf-8")),
+            jsonMenu : output,
+            hostTel  : $("#hostTel").val(),
+            imNumber : $("#imNumber").val(),
+            imType   : $("#imType").val()
+        }, function (json){
+            var result = eval("(" + json + ")");
+            if(result.success == true){
+                var change=selectedItem.parent().children("li").eq(0);
+                selectedItem.insertBefore(change);
+                alert("删除成功!");
+                $("#json-menu").val(decorateOutput(output));
+                actionForm.action="<%=basePath%>weixin/weixinMenu!toEditMenu.action";
+                actionForm.submit();
+            } else {
+                alert(result.rspText);
+                $("#json-menu").val(decorateOutput(old));
+                actionForm.action="<%=basePath%>weixin/weixinMenu!toEditMenu.action";
+                actionForm.submit();
+            }
+        });
+    }
+
+    function subkeys(obj) {
+        var str = "";
+        var tabid = $(obj).children(".toTab").val();
+        var lis = $("#" + tabid).children("li");
+        for (var i=0; i<lis.length; i++) {
+            var li = lis.get(i);
+            var name = $(li).children(".menuName").val().trim();
+            var type = $(li).children(".type").val();
+            if (type != 'menu') {
+                if (type == 'view') {
+                    var url = decorateHttp($(li).children(".url").val().trim());
+                    key = name + "_" + url;
+                    str += key + ",";
+                }
+                else {
+                    var key = $(li).children(".key").val();
+                    str += key + ",";
+                }
+            }
+        }
+        return str;
+    }
+
+    //判断是否只剩下一个子菜单
+    function isLast(item) {
+        var lis = $(item).siblings("li");
+        var num = 0;
+        for (var i=0; i<lis.length; i++) {
+            var li = lis.get(i);
+            if($(li).children("div").children("span").text().trim() !=""){
+                num += 1;
+            }
+        }
+        if (num == 0) return true;
+        else return false;
+    }
+
+    //将微信菜单组转成数组
+    function generateMenu() {
+        var imNumber = $("#imNumber").val();
+        var menu = {};
+        var menuItems = [];
+        var columns = $(".column");
+        var menuItemRealSize = 0;
+        for(var i=0; i<columns.length; i++) {
+            var item = columns.get(i);
+            var bar = $(item).children(".bar");
+            var tabId = $(bar).children(".toTab").val();
+
+            var itemName = $(bar).children("div").text().trim();
+            var itemType = $(bar).children("input.type").val();
+            var itemKey = generateKey($(bar), imNumber);
+            var itemUrl = $(bar).children("input.url").val().trim();
+            if (itemName != "") {
+                menuItemRealSize ++;
+                //菜单为menu类型，获取子菜单
+                if(itemType == 'menu') {
+                    var subItems = $("#" + tabId).children("li");
+
+                    var menuSubItems = [];
+                    for (var j=0; j<subItems.length; j++) {
+                        var subItem = subItems.get(j);
+                        var subItemName = $(subItem).children("div").text().trim();
+                        var subItemType = $(subItem).children("input.type").val();
+                        var subItemKey = generateKey($(subItem), imNumber);
+                        var subItemUrl = $(subItem).children("input.url").val().trim();
+                        if (subItemName != "") {
+                            if (subItemType == 'view') {
+                                menuSubItems.push({
+                                    "type" : subItemType,
+                                    "name" : encodePlus(encodeURI(subItemName)),
+                                    "url"  : decorateHttp(encodePlus(encodeURI(subItemUrl)))
+                                });
+                            }
+                            else {
+                                menuSubItems.push({
+                                    "type" : subItemType,
+                                    "name" : encodePlus(encodeURI(subItemName)),
+                                    "key"  : encodePlus(encodeURI(subItemKey))
+                                });
+                            }
+                        }
+                    }
+
+                    menuItems.push({
+                        "name" : encodePlus(encodeURI(itemName)),
+                        "sub_button" : menuSubItems
+                    });
+                }
+                else if (itemType == 'view') {
+                    menuItems.push({
+                        "type" : itemType,
+                        "name" : encodePlus(encodeURI(itemName)),
+                        "url"  : decorateHttp(encodePlus(encodeURI(itemUrl)))
+                    });
+                }
+                else {
+                    menuItems.push({
+                        "type" : itemType,
+                        "name" : encodePlus(encodeURI(itemName)),
+                        "key"  : encodePlus(encodeURI(itemKey))
+                    });
+                }
+            }
+        }
+        if (menuItemRealSize == 0) {
+            alert("菜单为空，请添加菜单!");
+            return "";
+        }
+        menu = {"button" : menuItems};
+        var output = JSON.stringify(menu);
+        return output;
+    }
+
+    function decorateOutput(str) {
+        return '{"menu" : ' + str + '}';
+    }
+
+    function decorateHttp(str) {
+        var index = str.indexOf('http');
+        if (index == -1) return "http://" + str;
+        else return str;
+    }
+
+    //清空
+    function resetMenuConfig() {
+        $("#item-name").val("");
+        $("#item-type").val("");
+        //$("#item-key").val("");
+        $("#item-url").val("");
+        $("#item-processId").val("");
+        $("#text-content").val("");
+        $("#materialTitle").val("");
+        $("#materialId").val("");
+    }
+
+    function resetSelectedItem() {
+        var selectedItem = $('.selected');
+        selectedItem.children("div").html("<span>&nbsp;</span>");
+        selectedItem.children("input.type").val("");
+        selectedItem.children("input.key").val("");
+        selectedItem.children("input.url").val("");
+    }
+
+    //将菜单封装成json格式的字符串并提交
+    function submitMenu() {
+        var selectedItem = $('.selected');
+        var imNumber = $("#imNumber").val();
+        var type = $("#item-type").val().trim();
+        var name = $("#item-name").val().trim();
+        var key = generateKey(selectedItem, imNumber);
+        var processId = $("#item-processId").val();
+        var msgType = $("#msgType").val();
+        var url = decorateHttp($("#item-url").val().trim());
+        var authUrl = processUrl(url);
+        var materialId = $("#materialId").val();
+        var textContent = $("#text-content").val().trim();
+        var old = generateMenu();
+        var oldType = selectedItem.children("input.type").val();
+        var oldKey = selectedItem.children("input.key").val();
+        var oldUrl = selectedItem.children("input.url").val();
+        var oldName = selectedItem.children("input.menuName").val();
+
+        selectedItem.children("div").children("span").text(name);
+        selectedItem.children("input.type").val(type);
+        if (type == "menu") {
+            var tabId = selectedItem.children(".toTab").val();
+            var tab = $("#" + tabId);
+            $(tab).css("background-color", "#ffffff");
+            var lis = $(tab).children("li");
+            var num=0;
+            for (var i=0; i<lis.length; i++) {
+                var li = lis.get(i);
+                if($(li).children("div").children("span").text().trim()==""){
+                    num+=1;
+                }
+            }
+            if(lis.length==num){
+                //alert("主菜单下必须要有子菜单才能保存!");
+                var tabId = selectedItem.children(".toTab").val();
+                var tab = $("#" + tabId);
+                $(tab).css("background-color", "#ffffff");
+                var lis = $(tab).children("li");
+                for (var i=0; i<lis.length; i++) {
+                    var li = lis.get(i);
+                    //$(li).bind("click", selectItem);
+                    $(li).hover(function() {
+                        $(this).css("cursor", "pointer");
+                        $(this).css("background-color", "#f0f8f8");
+                    }, function() {
+                        $(this).css("background-color", "#ffffff");
+                    });
+                }
+                return;
+            }
+        }
+        if (name == "" || type == "") {
+            $("#delete-success-alert").hide();
+            $("#delete-fail-alert").hide();
+            $("#modify-fail-alert").show();
+            return;
+        }
+        var data = {
+            'hostTel'  : $("#hostTel").val(),
+            'imNumber' : $("#imNumber").val(),
+            'imType'   : $("#imType").val(),
+            'oldType'  : oldType,
+            'oldKey'   : oldKey,
+            'oldUrl'   : oldUrl,
+            'oldName'  : oldName
+        };
+        if (type == "click") {
+            if(textContent=="" && msgType == 3){
+                alert("文本内容不能为空!");
+                return;
+            }
+            selectedItem.children("input.key").val(key);
+            data.type= "click";
+            data.menuName= encodeURI(name, "utf-8");
+            data.key= encodePlus(encodeURI(key, "utf-8"));
+            data.msgType= msgType;
+            data.processId= processId;
+            data.materialId= materialId;
+            data.textContent= textContent;
+
+        }
+        else if (type == "view") {
+            if (url == "") {
+                alert("url不能为空!");
+                return;
+            }else{
+                var isAuth = $('input:radio[name="isAuth"]:checked').val();
+                data.type="view";
+                data.menuName=encodeURI(name, "utf-8");
+                data.url=encodePlus(encodeURI(url, "utf-8"));
+                data.isAuth = isAuth;
+                if (isAuth == 1) {
+                    selectedItem.children("input.url").val(authUrl);
+                }
+                if (isAuth == 2) {
+                    selectedItem.children("input.url").val(url);
+                }
+            }
+        }
+        else if (type == "menu") {
+            data.type = "menu";
+            var tabId = selectedItem.children(".toTab").val();
+            var tab = $("#" + tabId);
+            $(tab).css("background-color", "#ffffff");
+            var lis = $(tab).children("li");
+            for (var i=0; i<lis.length; i++) {
+                var li = lis.get(i);
+                //$(li).bind("click", selectItem);
+                $(li).hover(function() {
+                    $(this).css("cursor", "pointer");
+                    $(this).css("background-color", "#f0f8f8");
+                }, function() {
+                    $(this).css("background-color", "#ffffff");
+                });
+            }
+        }
+        else {
+            selectedItem.children("input.key").val(key);
+            data.type= type;
+            data.menuName= encodeURI(name, "utf-8");
+            data.key= encodePlus(encodeURI(key, "utf-8"));
+            data.msgType= msgType;
+        }
+        var output = generateMenu();
+        if(!window.confirm("是否确定要保存？")) {
+            return;
+        }
+        data.jsonMenu=output;
+        var uri = "<%=basePath%>weixin/weixinMenu!transEditMenu.action";
+        $.post(uri,data ,function (json){
+            var result = eval("(" + json + ")");
+            if(result.success==true){
+                alert("保存成功!");
+                $("#json-menu").val(decorateOutput(output));
+                actionForm.action="<%=basePath%>weixin/weixinMenu!toEditMenu.action";
+                actionForm.submit();
+            } else {
+                alert(result.rspText);
+                $("#json-menu").val(decorateOutput(old));
+                actionForm.action="<%=basePath%>weixin/weixinMenu!toEditMenu.action";
+                actionForm.submit();
+            }
+        });
+    }
+
+    var processUrl = function(url) {
+        var imNumber = $("#imNumber").val();
+        var isAuth = $('input:radio[name="isAuth"]:checked').val();
+        if (isAuth == 1) {
+            $.ajax({
+                url:'<%=basePath%>weixin/weixinMenu!auth2Url.action',
+                data:{
+                    "imNumber": imNumber,
+                    "url": url
+                },
+                type:'post',
+                async: false,
+                success:function(data) {
+                    url =  data;
+                }
+            });
+        }
+        return url;
+    }
+
+    var generateKey = function($obj, sign) {
+        var k = $obj.children("input.key").val().trim();
+        if (k != "") return k;
+        /*
+        var index, sindex;
+        index = $obj.children("input.index").val();
+        sindex = $obj.children("input.sindex").val();
+        return  sign + "_M_" + index + "_" + sindex;
+        */
+        return sign + "_" + uuid();
+    }
+    //对+进行手动的url编码
+    function encodePlus(str) {
+        return str.replace(/\+/g, '%2B');
+    }
+    function menuCancel() {
+        window.history.back();
+    }
+
+    function selMaterial() {
+        var sUrl = "<%=basePath%>scManager/scInfo!sucaiList.action?scopeType=0_161";
+        /*var params = new Array();
+        params[0] = window;
+        params[1] = sUrl;
+        var sFeatures = "dialogHeight:500px;dialogWidth:700px;dialogLeft:250px;help:no;scroll:yes;";
+        window.showModalDialog(sUrl, window, sFeatures);
+        */
+        window.open(sUrl, 'newwindow', 'height=400, width=700, top=100,left=250, toolbar=no, menubar=no, scrollbars=yes,location=no, status=no');
+    }
+
+    //修改流程目录的时候触发
+    function change_dir() {
+        var dir = $("#directoryId").val();
+        var process=$("#processIdHidden").val();
+        if (dir == 0)  {
+            $("#processId").html("<option>--请选择--</option>");
+            return;
+        }
+        var url = "<%=basePath%>question/question!getProcess.action";
+        $.post(url, {
+            'directoryId' : dir,
+            'processId' : process
+        }, function(ret) {
+            $("#item-processId").html(ret);
+        });
+    }
+    //上下移动
+    $(document).ready(function(){
+
+        $("#move_up").click(function(){
+            RightMenuMoveToTop();
+        });
+        $("#move_down").click(function(){
+
+            RightMenuMoveToBottom();
+        });
+        $("#move_left").click(function(){
+
+            RightMenuMoveToLeft();
+        });
+        $("#move_right").click(function(){
+
+            LeftMenuMoveToRight();
+        });
+    });
+
+
+    //function for RightMenuMoveToTop()
+    function RightMenuMoveToTop(){
+
+        if($("ul li").length<=1)return;
+
+        var selectedLiObj=$('.selected');
+        //index==0
+        //var tone=selectedLiObj.parent().prev();
+
+        var isSub = selectedLiObj.children('.isSub').val();
+        if(isSub){
+
+            if(selectedLiObj.index()==1){
+                alert("提示：到达是顶部,无法继续上移！");}else{
+                var $t = selectedLiObj.prev();
+                if($t.find("div span").text().trim()!=''){
+                    $t.before(selectedLiObj);
+                }
+                else{
+                    alert("继续上移不符合要求，请继续其他操作");
+                    $("#moveup").hide();
+
+                }}
+        }
+        else{
+
+            $("#moveup").hide();
+            $("#movedown").hide();
+
+        }
+
+
+
+    }
+
+    //RightMenuMoveToBottom
+    function RightMenuMoveToBottom(){
+        if($("ul li").length<=1)return;
+        var selectedLiObj=$('.selected');
+
+        var isSub = selectedLiObj.children('.isSub').val();
+        if(isSub){
+            $("#moveup").show();
+//alert(selectedLiObj.index())
+//lastplace
+            if(selectedLiObj.index()==5)
+
+                alert("提示：到达底部，无法继续下移！ ");
+
+            var $t = selectedLiObj.next();
+            $t.after(selectedLiObj)
+        }else{
+
+            $("#moveup").hide();
+            $("#movedown").hide();
+
+        }
+
+
+    }
+
+    var exchange = function(a,b){
+        var an = a.next("li"), ap = a.prev("li");
+        var bn = b.next("li"), bp = b.prev("li");
+
+        if (an.length != 0) {
+            b.insertBefore(an);
+        }
+        else {
+            b.insertAfter(ap);
+        }
+
+
+        if (bn.length != 0) {
+            a.insertBefore(bn);
+        }
+        else {
+            a.insertAfter(bp);
+        }
+
+
+    };
+
+    function RightMenuMoveToLeft(){
+
+        var selectedLiObj=$('.selected');
+        var index=selectedLiObj.index();
+
+        var isSub = selectedLiObj.children('.isSub').val();
+        var aboutTarget;
+        var nIndex=0;
+        var tindex;
+        //the top of chosed
+        var tindex;
+        if(isSub == 'true'){
+
+            $("#moveup").show();
+            //toleft中相同index处的对象
+            var toWillSelected=null;
+
+
+            if(selectedLiObj.parent().parent().prev().length!=0){
+                toWillSelected=selectedLiObj.parent().parent().prev().children().children().eq(index);
+
+
+                var len=selectedLiObj.parent().parent().prev().children().children("ul li").length;
+                var len1=selectedLiObj.parent().find("li").length;
+
+                for(var i=1;i<=len1;i++){
+                    var x=selectedLiObj.parent().children().eq(i);
+                    var xx=x.find("div span").text().trim();
+                    if(xx!=''){
+                        //alert(xx);
+                        tindex=i;
+                        for(var i=1;i<=len;i++){
+
+
+                            aboutTarget=selectedLiObj.parent().parent().prev().children().children().eq(i);
+                            var targetText=aboutTarget.find("div span").text().trim();
+                            //selectedLiObj上面的li对象
+                            var bselectedLiObj=selectedLiObj.prev();
+                            //selectedLiObj上面的值
+                            var bselectedLiObjText=bselectedLiObj.find("div span").text().trim();
+                            if(targetText!=''){
+
+                                nIndex=i;	if(bselectedLiObjText!=''){
+                                    if(nIndex<=index){
+                                        exchange(selectedLiObj,toWillSelected);
+
+
+                                    }
+                                    else{
+                                        //selectedLiObj.insertBefore(aboutTarget);
+                                        var aa  = aboutTarget.prev();
+                                        exchange(selectedLiObj,aa);
+                                        var tobj=aa.parent().children().eq(tindex);
+                                        aa.insertBefore(tobj);
+
+
+                                    }}else{
+
+                                    if(nIndex<=index){
+                                        exchange(selectedLiObj,toWillSelected);
+
+                                    }
+                                    else{
+                                        //selectedLiObj.insertBefore(aboutTarget);
+                                        var aa  = aboutTarget.prev();
+                                        exchange(selectedLiObj,aa);
+
+                                    }
+                                }
+                                return;
+                            }
+
+                        }
+                        return;
+                    }
+
+                }
+
+
+            }else{alert("该菜单已被移至最左端，无法继续左移，请进行其他操作!");}
+
+        }else{
+
+            var a=selectedLiObj.parent();
+            var ap=a.prev(".column");
+            var an=a.next(".column");
+            if(ap.length!=0){
+
+                ap.before(a);
+            }
+            else{alert("该菜单已被移至最左端，无法继续左移，请进行其他操作!");}
+        }
+    }
+    function LeftMenuMoveToRight(){
+
+        var selectedLiObj=$('.selected');
+        var index=selectedLiObj.index();
+
+        var isSub = selectedLiObj.children('.isSub').val();
+        var aboutTarget;
+        var nIndex=0;
+        var toWillSelected=null;
+        var tindex;
+        if(isSub == 'true'){
+            $("#moveup").show();
+            if(selectedLiObj.parent().parent().next().length!=0){
+                toWillSelected=selectedLiObj.parent().parent().next().children().children().eq(index);
+                //var ntoWillSelected=toWillSelected.next();
+                if (toWillSelected.parent().css("background-color") === "rgb(245, 245, 245)") {
+                    alert("提示：右边不是菜单项，无法右移！");
+                    return;
+                }
+                else
+                {
+                    var len=selectedLiObj.parent().parent().next().children().children("ul li").length;
+                    var len1=selectedLiObj.parent().find("li").length;
+
+                    for(var i=1;i<=len1;i++){
+                        var x=selectedLiObj.parent().children().eq(i);
+                        var xx=x.find("div span").text().trim();
+                        if(xx!=''){
+                            //alert(xx);
+                            tindex=i;
+                            for(var i=1;i<=len;i++){
+
+                                aboutTarget=selectedLiObj.parent().parent().next().children().children().eq(i);
+                                var targetText=aboutTarget.find("div").text().trim();
+                                //selectedLiObj上面的li对象
+                                var bselectedLiObj=selectedLiObj.prev();
+                                //selectedLiObj上面的值
+                                var bselectedLiObjText=bselectedLiObj.find("div span").text().trim();
+                                if(targetText!=''){
+
+                                    nIndex=i;
+                                    if(bselectedLiObjText!=''){
+                                        if(nIndex<=index){
+                                            exchange(selectedLiObj,toWillSelected);
+
+                                            //var topselected=selectedLiObj.prev()
+
+                                        }
+                                        else{
+                                            //aboutTarget.before(selectedLiObj);
+                                            var aa  = aboutTarget.prev();
+                                            exchange(selectedLiObj,aa);
+                                            var tobj=aa.parent().children().eq(tindex);
+                                            aa.insertBefore(tobj);
+                                        }
+                                    }else{
+                                        if(nIndex<=index){
+                                            exchange(selectedLiObj,toWillSelected);
+
+                                            //var topselected=selectedLiObj.prev()
+
+                                        }
+                                        else{
+                                            //aboutTarget.before(selectedLiObj);
+                                            var aa  = aboutTarget.prev();
+                                            exchange(selectedLiObj,aa);
+
+                                        }
+                                    }
+                                    return;
+                                }
+
+                            }
+                            return;
+                        }
+
+                    }
+
+                }
+            }
+        }else{
+
+            var a=selectedLiObj.parent();
+            var ap=a.prev(".column");
+            var an=a.next(".column");
+            if(an.find("div div span").text().trim()!=''){
+
+                an.after(a);
+            }
+            else{alert("该菜单已被移至最右端，无法继续右移，请进行其他操作!");}
+        }
+    }
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+    }
+
+</script>
+</body>
+</html>
