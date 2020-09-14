@@ -1,19 +1,19 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: baseURL + 'retail/tretailconfirn/list',
+        url: baseURL + 'retail/retailconfirn/list',
         datatype: "json",
         colModel: [			
 			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
-			{ label: '', name: 'userName', index: 'user_name', width: 80 }, 			
-			{ label: '', name: 'passwd', index: 'passwd', width: 80 }, 			
-			{ label: '', name: 'liences', index: 'liences', width: 80 }, 			
-			{ label: '', name: 'shopName', index: 'shop_name', width: 80 }, 			
-			{ label: '', name: 'phone', index: 'phone', width: 80 }, 			
-			{ label: '', name: 'openid', index: 'openid', width: 80 }, 			
-			{ label: '', name: 'createTime', index: 'create_time', width: 80 }, 			
-			{ label: '', name: 'modifyTime', index: 'modify_time', width: 80 }, 			
-			{ label: '', name: 'lastLoginTime', index: 'last_login_time', width: 80 }, 			
-			{ label: '', name: 'lastLoginIp', index: 'last_login_ip', width: 80 }			
+			{ label: '用户账号', name: 'userName', index: 'user_name', width: 80 },
+			{ label: '加密密码', name: 'passwd', index: 'passwd', width: 80 },
+			{ label: '密码明文', name: 'liences', index: 'liences', width: 80 },
+			// { label: '', name: 'shopName', index: 'shop_name', width: 80 },
+			// { label: '', name: 'phone', index: 'phone', width: 80 },
+			{ label: 'openid', name: 'openid', index: 'openid', width: 80 },
+			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 },
+			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 }
+			/*{ label: '最近登录时间', name: 'lastLoginTime', index: 'last_login_time', width: 80 },*/
+			/*{ label: '最近登录ip', name: 'lastLoginIp', index: 'last_login_ip', width: 80 }*/
         ],
 		viewrecords: true,
         height: 385,
@@ -45,6 +45,9 @@ $(function () {
 var vm = new Vue({
 	el:'#icloudapp',
 	data:{
+        q:{
+            userName: '',
+        },
 		showList: true,
 		title: null,
 		tRetailConfirn: {}
@@ -70,7 +73,7 @@ var vm = new Vue({
 		},
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
-                var url = vm.tRetailConfirn.id == null ? "retail/tretailconfirn/save" : "retail/tretailconfirn/update";
+                var url = vm.tRetailConfirn.id == null ? "retail/retailconfirn/save" : "retail/retailconfirn/update";
                 $.ajax({
                     type: "POST",
                     url: baseURL + url,
@@ -104,7 +107,7 @@ var vm = new Vue({
                     lock = true;
 		            $.ajax({
                         type: "POST",
-                        url: baseURL + "retail/tretailconfirn/delete",
+                        url: baseURL + "retail/retailconfirn/delete",
                         contentType: "application/json",
                         data: JSON.stringify(ids),
                         success: function(r){
@@ -121,14 +124,15 @@ var vm = new Vue({
              });
 		},
 		getInfo: function(id){
-			$.get(baseURL + "retail/tretailconfirn/info/"+id, function(r){
+			$.get(baseURL + "retail/retailconfirn/info/"+id, function(r){
                 vm.tRetailConfirn = r.tRetailConfirn;
             });
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
+			$("#jqGrid").jqGrid('setGridParam',{
+                postData:vm.q,
                 page:page
             }).trigger("reloadGrid");
 		}

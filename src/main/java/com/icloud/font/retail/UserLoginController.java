@@ -57,6 +57,9 @@ public class UserLoginController {
             if(!StringUtil.checkStr(passwd)){
                 return R.error("密码名不能为空");
             }
+            if(!StringUtil.checkStr(openid)){
+                return R.error("用户标识参数不能为空");
+            }
             QueryWrapper<TRetailConfirn> queryWrapper = new QueryWrapper<TRetailConfirn>();
             queryWrapper.lambda().eq(TRetailConfirn::getUserName,userName);
             List<TRetailConfirn> list = retailConfirnService.list(queryWrapper);
