@@ -331,7 +331,7 @@ public class MapEntryUtils {
      * @param fieldName 字段名称
      * @return Field对象
      */
-    private static Field getClassField(Class<?> clazz, String fieldName) {
+    public static Field getClassField(Class<?> clazz, String fieldName) {
         if( Object.class.getName().equals(clazz.getName())) {
             return null;
         }

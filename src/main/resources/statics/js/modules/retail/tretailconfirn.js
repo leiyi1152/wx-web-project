@@ -1,4 +1,5 @@
 $(function () {
+
     $("#jqGrid").jqGrid({
         url: baseURL + 'retail/retailconfirn/list',
         datatype: "json",
@@ -40,7 +41,32 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
         }
     });
+
+
+    new AjaxUpload('#upload', {
+        action: baseURL + "local/localUplaod/upload",
+        name: 'file',
+        autoSubmit:true,
+        responseType:"json",
+        onSubmit:function(file, extension){
+            if (!(extension && /^(xlsx|xls)$/.test(extension.toLowerCase()))){
+                alert('只支持xlsx、xls格式的图片！');
+                return false;
+            }
+        },
+        onComplete : function(file, r){
+            console.log("r=="+JSON.stringify(r));
+            console.log("file=="+file);
+            if(r.code == 0){
+                alert("上传成功!");
+                vm.userurl = r.url;
+            }else{
+                alert(r.msg);
+            }
+        }
+    });
 });
+
 
 var vm = new Vue({
 	el:'#icloudapp',
@@ -48,7 +74,9 @@ var vm = new Vue({
         q:{
             userName: '',
         },
+        userurl:'',//用户账号文件
 		showList: true,
+        showUserurl: false,//是否显示导入按钮
 		title: null,
 		tRetailConfirn: {}
 	},
@@ -58,14 +86,22 @@ var vm = new Vue({
 		},
 		add: function(){
 			vm.showList = false;
+            vm.showUserurl = false;
 			vm.title = "新增";
 			vm.tRetailConfirn = {};
 		},
+        addimpot:function(){
+            vm.showList = false;
+            vm.showUserurl = true;
+            vm.title = "导入";
+            vm.tRetailConfirn = {};
+        },
 		update: function (event) {
 			var id = getSelectedRow();
 			if(id == null){
 				return ;
 			}
+            vm.showUserurl = false;
 			vm.showList = false;
             vm.title = "修改";
             
@@ -94,6 +130,30 @@ var vm = new Vue({
                 });
 			});
 		},
+        //导入
+        btnInpomt: function (event) {
+            $('#btnInpomt').button('loading').delay(1000).queue(function() {
+                var viurl = "retail/retailconfirn/importusers?url="+vm.userurl;
+                $.ajax({
+                    type: "get",
+                    url: baseURL + viurl,
+                    contentType: "application/json",
+                    // data: {url:vm.userurl},
+                    success: function(r){
+                        if(r.code === 0){
+                            layer.msg("操作成功", {icon: 1});
+                            vm.reload();
+                            $('#btnInpomt').button('reset');
+                            $('#btnInpomt').dequeue();
+                        }else{
+                            layer.alert(r.msg);
+                            $('#btnInpomt').button('reset');
+                            $('#btnInpomt').dequeue();
+                        }
+                    }
+                });
+            });
+        },
 		del: function (event) {
 			var ids = getSelectedRows();
 			if(ids == null){
@@ -130,10 +190,12 @@ var vm = new Vue({
 		},
 		reload: function (event) {
 			vm.showList = true;
+            vm.showUserurl = false;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{
                 postData:vm.q,
-                page:page
+                page: 1
+                // page:page
             }).trigger("reloadGrid");
 		}
 	}

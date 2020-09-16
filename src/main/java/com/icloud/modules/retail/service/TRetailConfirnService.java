@@ -6,6 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.icloud.basecommon.service.BaseServiceImpl;
 import com.icloud.modules.retail.dao.TRetailConfirnMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 /**
  * 
  * @author zdh
@@ -18,5 +21,7 @@ public class TRetailConfirnService extends BaseServiceImpl<TRetailConfirnMapper,
 
     @Autowired
     private TRetailConfirnMapper rRetailConfirnMapper;
+
+
 }
 

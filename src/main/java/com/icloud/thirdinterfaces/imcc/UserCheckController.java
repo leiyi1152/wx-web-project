@@ -66,7 +66,7 @@ public class UserCheckController {
                 queryWrapper.lambda().eq(TRetailConfirn::getOpenid,openid);
                 user = (TRetailConfirn) retailConfirnService.getOne(queryWrapper);
                 log.info("数据库中获取用户信息:=="+ JSON.toJSONString(user));
-                redisService.set(openid,user,3000L);//3000秒
+                redisService.set(openid,user,500L);//500秒
             }else{
                 user = (TRetailConfirn) obj;
             }

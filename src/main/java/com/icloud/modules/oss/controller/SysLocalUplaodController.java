@@ -3,9 +3,9 @@ package com.icloud.modules.oss.controller; /**
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.icloud.common.AppContext;
 import com.icloud.common.DateUtil;
 import com.icloud.config.global.MyPropertitys;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class SysLocalUplaodController {
 	 */
 //	@RequestMapping("/upload",)
     @PostMapping(value="/upload",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@RequiresPermissions("sys:oss:all")
+//	@RequiresPermissions("sys:oss:all")
     @ResponseBody
 	public JSONObject upload(@RequestParam("file") MultipartFile file) {
         JSONObject result = new JSONObject();
@@ -71,19 +71,24 @@ public class SysLocalUplaodController {
                 //可以对文件大小进行检查
             }
             //文件存储的相对路径
-            String basePath = myPropertitys.getUploadpath()+"/goods/"+ DateUtil.getYearMonthDay(new Date());
-            //获取项目根路径的绝对路径
-            String realPath = request.getSession().getServletContext().getRealPath(basePath);
-            log.error(realPath);
-            File dirFile = new File(realPath);
-            if (!dirFile.exists()) {
-                dirFile.mkdirs();
+//            String basePath = myPropertitys.getUploadpath()+"/goods/"+ DateUtil.getYearMonthDay(new Date());
+            String basePath = AppContext.baseDirectory()+"/goods/"+ DateUtil.getYearMonthDay(new Date());
+            File filetempbaseDir = new File(basePath);
+            if (!filetempbaseDir.exists()) {
+                filetempbaseDir.mkdirs();
             }
+            //获取项目根路径的绝对路径
+//            String realPath = request.getSession().getServletContext().getRealPath(basePath);
+//            log.error(realPath);
+//            File dirFile = new File(realPath);
+//            if (!dirFile.exists()) {
+//                dirFile.mkdirs();
+//            }
             //获取新的文件名
             String id = UUID.randomUUID().toString();
             id = id.replace("-", "");
             String newfileName =  id + extension;
-            file.transferTo(new File(dirFile+"/"+newfileName));
+            file.transferTo(new File(basePath+"/"+newfileName));
             log.info("上传成功");
 
             result.put("code",0);
@@ -92,6 +97,7 @@ public class SysLocalUplaodController {
             return result;
 
         } catch (Exception e) {
+            e.printStackTrace();
             log.info("上传文件异常=="+e.getMessage());
             result.put("code",500);
             result.put("msg",e.getMessage());

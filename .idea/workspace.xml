@@ -20,14 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6fbc680-6164-4f33-9b24-94a00587f493" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/retail/retailconfirn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/common/AppContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/font/retail/UserLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/font/retail/UserLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/BaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/basecommon/service/redis/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/common/MapEntryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/common/MapEntryUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/oss/controller/SysLocalUplaodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/oss/controller/SysLocalUplaodController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/retail/controller/TRetailConfirnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/retail/controller/TRetailConfirnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/retail/service/TRetailConfirnService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/retail/service/TRetailConfirnService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/imcc/UserCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/thirdinterfaces/imcc/UserCheckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/retail/tretailconfirn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/retail/tretailconfirn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wx-web-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/wx-web-project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/retail/retailconfirn.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/modules/retail/retailconfirn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/modules/retail/tretailconfirn.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +86,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/test/java/com/icloud/TimeTest.java&#10;D:/project/myproject/web-project/src/main/resources/application-dev.yml&#10;D:/project/myproject/wx-web-project/src/test/java/com/icloud/NicknameTest.java&#10;D:/project/myproject/web-project/src/main/resources/application.yml&#10;D:/project/myproject/wx-web-project/src/test/java/com/icloud/LongCoinChargeTest.java&#10;D:/project/myproject/web-project/src/main/resources/application-dev-init-bak.yml" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/statics/js/modules/retail" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -92,27 +97,40 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\statics\js\modules\retail" />
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\retail" />
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\retail" />
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\wxmp" />
-      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.icloud.font.retail" />
-      <recent name="com.icloud.modules.mpwx.vo.menu" />
-      <recent name="com.icloud.modules.flow" />
-      <recent name="com.icloud.test" />
-      <recent name="com.icloud.aspect" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\" />
       <recent name="D:\project\myproject\web-project\src\main\resources\statics\third_plugin" />
       <recent name="D:\project\myproject\web-project\src\main\resources\statics\js" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icloud.common" />
+      <recent name="com.icloud.font.retail" />
+      <recent name="com.icloud.modules.mpwx.vo.menu" />
+      <recent name="com.icloud.modules.flow" />
+      <recent name="com.icloud.test" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources" />
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\statics\js\modules\retail" />
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\retail" />
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\front\retail" />
+      <recent name="D:\project\myproject\wx-web-project\src\main\resources\templates\modules\wxmp" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="Application.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.icloud.Application" />
+      <module name="wx-web-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="IMSessionUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.icloud.thirdinterfaces.imcc.util.IMSessionUtil" />
       <module name="wx-web-project" />
@@ -142,13 +160,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tologinpage.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/wx-web-project/templates/modules/front/retail/tologinpage.html" useBuiltInWebServerPort="true">
+    <configuration name="retailconfirn.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/wx-web-project/templates/modules/retail/retailconfirn.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="wxmpheader.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/wx-web-project/templates/wxmpheader.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="common.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/resources/statics/js/common.js" working-dir="$PROJECT_DIR$/src/main/resources/statics/js">
       <method v="2" />
     </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -160,19 +175,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.IMSessionUtil" />
-      <item itemvalue="JavaScript Debug.tologinpage.html" />
       <item itemvalue="JavaScript Debug.wxmpheader.html" />
       <item itemvalue="JUnit.CreateUserPassTest.test" />
-      <item itemvalue="Node.js.common.js" />
       <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Application.Application" />
+      <item itemvalue="JavaScript Debug.retailconfirn.html" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
+        <item itemvalue="JavaScript Debug.retailconfirn.html" />
         <item itemvalue="JUnit.CreateUserPassTest.test" />
         <item itemvalue="JavaScript Debug.wxmpheader.html" />
         <item itemvalue="Application.IMSessionUtil" />
-        <item itemvalue="JavaScript Debug.tologinpage.html" />
-        <item itemvalue="Node.js.common.js" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +229,9 @@
       <workItem from="1597892053319" duration="285000" />
       <workItem from="1599823482917" duration="1100000" />
       <workItem from="1599992542295" duration="606000" />
-      <workItem from="1600050316148" duration="2719000" />
+      <workItem from="1600050316148" duration="4936000" />
+      <workItem from="1600131420998" duration="5895000" />
+      <workItem from="1600218885960" duration="14041000" />
     </task>
     <task id="LOCAL-00001" summary="修改写字楼售bug">
       <created>1574649748896</created>
@@ -280,46 +297,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595921263848" />
-    <state width="1493" height="171" key="GridCell.Tab.0.bottom" timestamp="1600052814742">
+    <state width="1493" height="234" key="GridCell.Tab.0.bottom" timestamp="1600241609519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="171" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600052814742" />
-    <state width="1493" height="171" key="GridCell.Tab.0.center" timestamp="1600052814741">
+    <state width="1493" height="234" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600241609519" />
+    <state width="1493" height="234" key="GridCell.Tab.0.center" timestamp="1600241609518">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="171" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600052814741" />
-    <state width="1493" height="171" key="GridCell.Tab.0.left" timestamp="1600052814741">
+    <state width="1493" height="234" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600241609518" />
+    <state width="1493" height="234" key="GridCell.Tab.0.left" timestamp="1600241609518">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="171" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600052814741" />
-    <state width="1493" height="171" key="GridCell.Tab.0.right" timestamp="1600052814741">
+    <state width="1493" height="234" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600241609518" />
+    <state width="1493" height="234" key="GridCell.Tab.0.right" timestamp="1600241609519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="171" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600052814741" />
-    <state width="1493" height="115" key="GridCell.Tab.1.bottom" timestamp="1600052680403">
+    <state width="1493" height="234" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600241609519" />
+    <state width="1493" height="105" key="GridCell.Tab.1.bottom" timestamp="1600225093902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600052680403" />
-    <state width="1493" height="115" key="GridCell.Tab.1.center" timestamp="1600052680403">
+    <state width="1493" height="105" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600225093902" />
+    <state width="1493" height="105" key="GridCell.Tab.1.center" timestamp="1600225093902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1600052680403" />
-    <state width="1493" height="115" key="GridCell.Tab.1.left" timestamp="1600052680403">
+    <state width="1493" height="105" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1600225093902" />
+    <state width="1493" height="105" key="GridCell.Tab.1.left" timestamp="1600225093901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1600052680403" />
-    <state width="1493" height="115" key="GridCell.Tab.1.right" timestamp="1600052680403">
+    <state width="1493" height="105" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1600225093901" />
+    <state width="1493" height="105" key="GridCell.Tab.1.right" timestamp="1600225093902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1600052680403" />
+    <state width="1493" height="105" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1600225093902" />
     <state x="270" y="57" key="SettingsEditor" timestamp="1594193609349">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594193609349" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1592799661701">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1600237575956">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1592799661701" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600237575956" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594178674588">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
