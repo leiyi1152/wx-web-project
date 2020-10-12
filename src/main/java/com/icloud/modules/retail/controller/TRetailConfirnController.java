@@ -3,6 +3,7 @@ package com.icloud.modules.retail.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.basecommon.model.Query;
 import com.icloud.basecommon.util.codec.Md5Utils;
+import com.icloud.basecommon.util.excelutilss.ExcelExportUtil;
 import com.icloud.basecommon.util.excelutilss.ExcelMoreSheetPoiUtil;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
@@ -11,13 +12,17 @@ import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.modules.retail.entity.TRetailConfirn;
 import com.icloud.modules.retail.service.TRetailConfirnService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 
@@ -48,6 +53,33 @@ public class TRetailConfirnController {
         return R.ok().put("page", page);
     }
 
+    @RequestMapping("/downLoaduserlist")
+    @RequiresPermissions("retail:retailconfirn:list")
+    public void export(HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String, Object> params) {
+        Query query = new Query(params);
+        PageUtils page = tRetailConfirnService.findByPage(query.getPageNum(),query.getPageSize(), query);
+
+        List<TRetailConfirn> list =page.getList();
+        HSSFWorkbook wb = ExcelExportUtil.MakeExcel(list);
+        String fileName = "用户信息列表.xls";
+        try {
+            fileName = new String(fileName.getBytes("utf-8"), "ISO8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        log.info("fileName:" + fileName);
+        response.reset();
+        response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);// 指定下载的文件名
+        response.setContentType("application/vnd.ms-excel;charset=utf-8");
+        try {
+            OutputStream output = response.getOutputStream();
+            wb.write(output);
+            output.flush();
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 信息

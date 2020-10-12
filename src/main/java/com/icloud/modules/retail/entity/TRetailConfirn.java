@@ -54,5 +54,9 @@ public  class TRetailConfirn implements Serializable {
    	   	   /*  */
        @TableField("last_login_ip")
        private String lastLoginIp;
+        /*  0未绑定 1已绑定（绑定openid）*/
+       @TableField("status")
+       private String status;
+
    	
 }

@@ -73,6 +73,9 @@ var vm = new Vue({
 	data:{
         q:{
             userName: '',
+            status:'',
+            page:1,
+            limit:1500,
         },
         userurl:'',//用户账号文件
 		showList: true,
@@ -154,6 +157,12 @@ var vm = new Vue({
                 });
             });
         },
+        //导出
+        btndownload: function (event) {
+            var viurl = baseURL + "retail/retailconfirn/downLoaduserlist?userName?="+vm.q.userName+"&status="+vm.q.status+"&page="+vm.q.page+"&limit="+vm.q.limit;
+            window.location.href = viurl;
+        },
+
 		del: function (event) {
 			var ids = getSelectedRows();
 			if(ids == null){

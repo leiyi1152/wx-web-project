@@ -78,6 +78,7 @@ public class UserLoginController {
                 return R.error("当前登陆账户已绑定其他微信账户");
             }
             retail.setOpenid(openid);
+            retail.setStatus("1");
 //            retail.setOpenid(user.getOpenid());
             retail.setModifyTime(new Date());
             retail.setLastLoginIp(IpUtil.getIpAddr(request));
