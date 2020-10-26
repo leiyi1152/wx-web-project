@@ -23,6 +23,9 @@ public class MyPropertitys {
     private Session session;
     //用户登陆认证地址
     private String usercheckurl;
+    //是否开启用户认证
+    private String isopencheck;
+
 
 
     /**

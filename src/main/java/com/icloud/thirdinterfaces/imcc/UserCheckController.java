@@ -53,6 +53,32 @@ public class UserCheckController {
             if(!StringUtil.checkStr(line)){
                 return null;
             }
+            //加入是否需要认证的开关
+            String isopencheck = myPropertitys.getIsopencheck();//0不用认证
+            log.info("isopencheck==="+isopencheck);
+            if(StringUtil.checkStr(isopencheck) && "0".equals(isopencheck)){
+                //返回结果
+                Map<String, Object> resultMap = new HashMap<String, Object>();
+                Map<String,String> sessionMap = new HashMap<String, String>(1);
+                String resultxml = null;
+                resultMap.put(IMSessionUtil._CODE, "0");
+                resultMap.put(IMSessionUtil._REASON,"success");
+                sessionMap.put("inputchooseresult","success");
+                resultMap.put(IMSessionUtil._SESSION_PROPERTIES, sessionMap);
+                resultxml = IMSessionUtil.createXml(resultMap, true);//成功 返回认证地址
+                response.setCharacterEncoding("gbk");
+                try {
+                    response.setContentType("text;charset=gbk");
+                    PrintWriter out = response.getWriter();
+                    log.info("checkUser_result===:"+resultxml);
+                    out.write(resultxml);
+                } catch (IOException e) {
+                    log.error("TIMCC ERROR" , e);
+                }
+                return null;
+            }
+
+
             //系统级参数节点获取
             String systemXml = line.substring(line.indexOf("<system>"), line.indexOf("</system>") + 9);
             //用户openid
@@ -109,4 +135,6 @@ public class UserCheckController {
         }
         return null;
     }
+
+
 }
